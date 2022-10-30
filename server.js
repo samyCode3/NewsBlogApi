@@ -1,6 +1,6 @@
 const express = require('express')
 const ejs = require('ejs')
-const mongoose = require("mongoose")
+// const mongoose = require("mongoose")
 const cors = require("cors")
 const PORT = process.env.PORT || 4000
 
@@ -15,10 +15,10 @@ app.get("/", (req, res) => {
 })
 
 const db = require("./config/dbConfig").MongoURL
-mongoose.Promise = global.Promise
+// mongoose.Promise = global.Promise
 
-mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => console.log("connected to mongo database"))
-    .catch(err => console.log(err))
+// mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => console.log("connected to mongo database"))
+//     .catch(err => console.log(err))
     app.get("/", (req, res) => {
         res.render("index")
     })

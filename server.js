@@ -1,6 +1,6 @@
-const express = require("express")
-const app = express()
-const ejs = require("ejs")
+const express = require('express')
+const ejs = require('ejs')
+const mongoose = require("mongoose")
 const cors = require("cors")
 const PORT = process.env.PORT || 4000
 
@@ -14,13 +14,15 @@ app.get("/", (req, res) => {
   res.render("index")
 })
 
-app.get("/hng-task1", (req, res) => {
-   return res.json({ 
-     slackUsername : "samson onifade",
-     age: 21,
-     backend: true,
-     bio: "My name is samson onifade, a backend developer"
-   })
-})
+const db = require("./config/dbConfig").MongoURL
+mongoose.Promise = global.Promise
+
+mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => console.log("connected to mongo database"))
+    .catch(err => console.log(err))
+    app.get("/", (req, res) => {
+        res.render("index")
+    })
+  
+   
 
 app.listen(PORT)

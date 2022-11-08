@@ -3,7 +3,7 @@ const ejs = require('ejs')
 const mongoose = require("mongoose")
 const cors = require("cors")
 const PORT = process.env.PORT || 4000
-// const UserAuth = require("./controllers/user.controller")
+const UserAuth = require("./controllers/user.controller")
 const Post = require("./controllers/post.controller")
 
 app.use(cors({
@@ -25,7 +25,7 @@ mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true }).then((
         res.render("index")
     })
   
-    // app.use('/api', UserAuth)
+    app.use('/api', UserAuth)
     app.use('/api', Post)
     
 

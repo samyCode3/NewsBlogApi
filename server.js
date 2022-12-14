@@ -1,4 +1,5 @@
 const express = require('express')
+const  app = express()
 const ejs = require('ejs')
 const mongoose = require("mongoose")
 const cors = require("cors")
@@ -29,4 +30,5 @@ mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true }).then((
     app.use('/api', Post)
     
 
-app.listen(PORT)
+app.listen(PORT, console.log(`app is running on ${PORT}`))
+module.exports =  app
